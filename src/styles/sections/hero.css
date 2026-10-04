@@ -23,3 +23,8 @@
 .hero-shade{background:rgba(10,26,63,.75)}
 /* el coral de marca no alcanza 4,5:1 sobre el velo en las zonas claras del video: se usa un tono coral aclarado */
 .hero .eyebrow.on-dark{color:#F9BFA5}
+/* escritorio (≥1024px): vuelve el degradado original, oscuro a la izquierda (donde está el texto) y más claro a la
+   derecha para que el video luzca; en tablet y celular el texto ocupa todo el ancho y se mantiene el velo completo */
+@media(min-width:1024px){.hero-shade{background:linear-gradient(90deg,rgba(10,26,63,.92) 0%,rgba(10,26,63,.72) 45%,rgba(10,26,63,.2) 80%),linear-gradient(0deg,rgba(10,26,63,.6),rgba(10,26,63,0) 40%)}}
+/* 1024–1279px: el texto llega hasta ~60% del ancho; el tramo oscuro se extiende un poco más para mantener WCAG AA */
+@media(min-width:1024px) and (max-width:1279px){.hero-shade{background:linear-gradient(90deg,rgba(10,26,63,.92) 0%,rgba(10,26,63,.75) 58%,rgba(10,26,63,.2) 88%),linear-gradient(0deg,rgba(10,26,63,.6),rgba(10,26,63,0) 40%)}}
