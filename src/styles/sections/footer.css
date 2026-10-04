@@ -9,7 +9,7 @@
 .ft-nav a{font:600 12px var(--font-corporativa);letter-spacing:var(--ls-nav);text-transform:uppercase}
 .ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:20px;padding-bottom:20px;border-top:1px solid rgba(177,191,218,.2);font:400 13px var(--font-complementaria);color:var(--htp-azul-200)}
 .ft-legal{display:flex;gap:24px;flex-wrap:wrap}
-.ft-bar{height:6px;background:var(--htp-naranja)}
+.ft-bar{height:6px;background:var(--htp-degradado)}
 @media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.ft-grid{grid-template-columns:1fr}}
 .ft-h{font-size:12px}
