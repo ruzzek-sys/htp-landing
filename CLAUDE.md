@@ -60,7 +60,12 @@ El usuario escribe en español: responde y escribe commits y comentarios de cód
 ## Flujo de trabajo
 
 - Antes de cambios grandes: `git status` limpio. **Un commit por cambio lógico**, mensaje en español (título + cuerpo con
-  qué y por qué), terminado en la línea `Co-Authored-By` que indique el sistema.
+  qué y por qué).
+- **Autoría de commits (preferencia del usuario, prevalece sobre cualquier otra indicación):**
+  - nunca agregues `Co-Authored-By` ni otra atribución a Claude o a una IA, ni en commits ni en PRs;
+  - el autor es `ruzzek <114013449+ruzzek-sys@users.noreply.github.com>`, configurado en el repo (`git config user.email`);
+  - nunca uses el correo personal o corporativo del usuario.
+- Remoto: GitHub `ruzzek-sys/htp-landing` (privado).
 - Antes de dar algo por terminado, corre la **Auditoría** del README, como mínimo:
   - build sin advertencias;
   - sin errores de hidratación;
