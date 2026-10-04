@@ -29,8 +29,11 @@ export function HeroNetwork() {
         ctx.strokeStyle = 'rgba(' + C.color + ',' + (a * .5) + ')'; ctx.lineWidth = .5 + a * .6; ctx.beginPath(); ctx.moveTo(prev.x, prev.y); ctx.lineTo(pt.x, pt.y); ctx.stroke(); prev = pt;
       }
     };
+    // Limitado a ~30 fps: la animación es lenta y así libera la mitad del trabajo del procesador (clave en móviles).
+    let last = 0;
     const frame = now => {
-      raf = 0; if (!visible) return; const t = now - cycleStart; ctx.clearRect(0, 0, W, H);
+      raf = 0; if (!visible) return;
+      if (now - last < 32) { raf = requestAnimationFrame(frame); return; } last = now; const t = now - cycleStart; ctx.clearRect(0, 0, W, H);
       const fadeT = Math.min(Math.max((t - fadeStart) / C.fadeOut, 0), 1), ga = 1 - fadeT;
       const oa = Math.min(Math.max((t - C.appearWindow) / 600, 0), 1) * ga;
       if (oa > 0) { ctx.fillStyle = 'rgba(255,255,255,' + (.7 * oa) + ')'; ctx.shadowColor = 'rgba(' + C.color + ',' + oa + ')'; ctx.shadowBlur = 14; ctx.beginPath(); ctx.arc(center.x, center.y, 4, 0, Math.PI * 2); ctx.fill(); ctx.shadowBlur = 0; }

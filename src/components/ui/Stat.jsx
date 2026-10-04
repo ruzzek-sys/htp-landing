@@ -35,7 +35,8 @@ export function Stat({ value, unit, label, onDark, animate = true, duration = 12
   const dec = m && m[2].includes(',') ? m[2].split(',')[1].length : 0;
   const shown = m ? m[1] + (n == null ? m[2] : n.toLocaleString('es-CL', { minimumFractionDigits: dec, maximumFractionDigits: dec })) + m[3] : value;
   return <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: 6, ...style }}>
-    <span aria-label={String(value) + (unit ? ' ' + unit : '')} style={{ font: '800 44px/1 var(--font-corporativa)', color: onDark ? '#fff' : 'var(--htp-azul)', letterSpacing: '-.01em', fontVariantNumeric: 'tabular-nums' }}>
+    <span className="stat-n" style={{ font: '800 44px/1 var(--font-corporativa)', color: onDark ? '#fff' : 'var(--htp-azul)', letterSpacing: '-.01em', fontVariantNumeric: 'tabular-nums' }}>
+      <span className="sr-only">{String(value) + (unit ? ' ' + unit : '')}</span>
       <span aria-hidden="true">{shown}</span>
       {unit && <span aria-hidden="true" style={{ fontWeight: 300, fontSize: 22, marginLeft: 4, color: onDark ? 'var(--htp-coral)' : 'var(--text-accent)' }}>{unit}</span>}
     </span>

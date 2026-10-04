@@ -42,6 +42,13 @@ export default function App() {
     return () => io.disconnect();
   }, [lang]);
 
+  // Las animaciones en bucle (brillos, cruces, vías del mapa, pulsos) se pausan en las secciones fuera de pantalla.
+  useEffect(() => {
+    const els = document.querySelectorAll('main section, footer');
+    const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('anim-off', !e.isIntersecting)), { rootMargin: '0px' });
+    els.forEach(el => io.observe(el)); return () => io.disconnect();
+  }, [lang]);
+
   return <>
     <a href="#contenido" className="skip-link">{t.skip}</a>
     <SiteHeader t={t} lang={lang} setLang={changeLang} active={active} />

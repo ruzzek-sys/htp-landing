@@ -26,10 +26,12 @@
 .stat-ic{color:var(--htp-azul);display:inline-flex;transition:transform var(--dur-slow) var(--ease-standard),color var(--dur-slow)}
 .stat-ic svg,.stat-ic svg *{stroke:url(#htpIcGrad)!important}
 .stat-cell:hover .stat-ic,.stat-cell:focus-visible .stat-ic{transform:translateY(-3px)}
-.stat-cell [aria-label]+span{display:none}
+.stat-cell .stat-n+span{display:none}
 .stat-d{margin:0;font:400 13px/1.5 var(--font-complementaria);color:var(--htp-gris-500);min-height:21px;opacity:0;transform:translateY(8px);transition:opacity 600ms var(--ease-gentle),transform 600ms var(--ease-gentle)}
 .stat-cell:hover .stat-d,.stat-cell:focus-visible .stat-d{opacity:1;transform:none}
 @media(hover:none){.stat-d{opacity:1;transform:none}}
 @media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-cell:not(:nth-child(3n)){border-right:0}.stat-cell:nth-child(odd){border-right:1px solid var(--border-subtle)}}
 @media(max-width:560px){.stat-cell{padding:24px 18px 22px;gap:14px}}
 @media(max-width:399px){.stats{grid-template-columns:1fr}.stat-cell:nth-child(odd){border-right:0}}
+/* el brillo giratorio de cada cifra solo se ve con hover/foco: fuera de eso no corre (evita recalcular estilos en cada cuadro) */
+.stat-cell{animation-play-state:paused}.stat-cell:hover,.stat-cell:focus-visible{animation-play-state:running}

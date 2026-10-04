@@ -21,3 +21,5 @@ html{scroll-behavior:auto}body{overflow-x:hidden}
 .lang-fade{animation:langFade 700ms var(--ease-standard) both}@keyframes langFade{from{opacity:0}to{opacity:1}}
 /* responsivo: ningún brillo o glow decorativo puede ensanchar la página (en móvil eso corta el lado derecho de todo el sitio) */
 main,.ft{overflow-x:clip}
+/* animaciones en bucle pausadas mientras su sección está fuera de pantalla (ver App.jsx) */
+.anim-off,.anim-off *,.anim-off *::before,.anim-off *::after{animation-play-state:paused!important}
