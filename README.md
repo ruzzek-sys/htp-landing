@@ -78,5 +78,5 @@ Reglas para que la hidratación coincida con el HTML generado:
 - **Imágenes:** Negocios y Conectividad tienen dos tamaños (`-800`/`-640`) para `srcset`; las de Visión 2050, máximo 1920 px.
 - **Video del hero:** `hero-1080.webm` (escritorio), `hero-720.webm` (celular), `hero-720.mp4` (iPhone con iOS < 17.4) y
   `hero-poster.webp`. Empieza a descargarse cuando la página terminó de cargar y se pausa fuera de pantalla.
-- **Mapa de Google:** se carga al tocar la vista previa en Contacto.
+- **Mapa de Google (Contacto):** se muestra directo con `loading="lazy"`: no se descarga al abrir la página, solo al acercarse a la sección (~0,5 MB de Google).
 

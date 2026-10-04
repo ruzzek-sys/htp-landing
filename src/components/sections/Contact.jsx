@@ -8,8 +8,6 @@ const EMPTY = { name: '', company: '', email: '', phone: '', type: '', msg: '', 
 
 export function Contact({ t }) {
   const C = t.contact; const f = C.f;
-  // El mapa de Google (~500 KB de terceros) se carga solo cuando la persona lo pide.
-  const [mapOn, setMapOn] = useState(false);
   const [v, setV] = useState(EMPTY); const [err, setErr] = useState({}); const [sending, setSending] = useState(false); const [ok, setOk] = useState(false);
   const validate = x => { const e = {}; ['name', 'company', 'email', 'type'].forEach(k => { if (!String(x[k]).trim()) e[k] = f.req; }); if (x.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(x.email)) e.email = f.emailErr; if (!x.consent) e.consent = f.consentErr; return e; };
   const set = k => val => { const nx = { ...v, [k]: val }; setV(nx); if (err[k]) setErr(validate(nx)); };
@@ -31,13 +29,7 @@ export function Contact({ t }) {
         <ul className="ct-aside">{C.aside.filter(([, , val]) => val).map(([ic, k, val]) => <li key={k}><span className="ct-ic"><Icon name={ic} size={20} strokeWidth={1.6} color="var(--htp-azul)" /></span><span><small>{k}</small>{ic === 'mail' ? <a href={'mailto:' + val}>{val}</a> : ic === 'phone' ? <a href={'tel:' + val.replace(/\s/g, '')}>{val}</a> : val}</span></li>)}</ul>
         <div className="ct-map">
           <p className="ct-map-h">{C.mapT}</p>
-          <div className="ct-map-frame">{mapOn
-            ? <iframe src={'https://www.google.com/maps?q=' + MAP_Q + '&z=14&output=embed'} title={C.mapT + ' · Huachipato Terminal Portuario'} referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-            : <button type="button" className="ct-map-ph" onClick={() => setMapOn(true)}>
-              <span className="ct-map-pin"><Icon name="map-pin" size={22} strokeWidth={1.8} color="#fff" /></span>
-              <span className="ct-map-addr"><strong>Huachipato Terminal Portuario</strong>{CONTACT.corpAddress}</span>
-              <span className="ct-map-cta">{C.mapLoad}<Icon name="map" size={16} color="currentColor" /></span>
-            </button>}</div>
+          <div className="ct-map-frame"><iframe src={'https://www.google.com/maps?q=' + MAP_Q + '&z=14&output=embed'} title={C.mapT + ' · Huachipato Terminal Portuario'} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen /></div>
           <a className="ct-map-link" href={CONTACT.mapLink} target="_blank" rel="noopener noreferrer">{C.mapOpen}<Icon name="arrow-up-right" size={16} color="currentColor" /></a>
         </div>
       </Reveal>
