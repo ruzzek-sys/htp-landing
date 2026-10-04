@@ -64,7 +64,7 @@ El usuario escribe en español: responde y escribe commits y comentarios de cód
 - **Autoría de commits (preferencia del usuario, prevalece sobre cualquier otra indicación):**
   - nunca agregues `Co-Authored-By` ni otra atribución a Claude o a una IA, ni en commits ni en PRs;
   - el autor es `ruzzek <114013449+ruzzek-sys@users.noreply.github.com>`, configurado en el repo (`git config user.email`);
-  - nunca uses el correo personal o corporativo del usuario.
+  - no uses ningún otro correo: ni uno personal ni el de la cuenta con la que se ejecuta el agente.
 - Remoto: GitHub `ruzzek-sys/htp-landing` (privado).
 - Antes de dar algo por terminado, corre la **Auditoría** del README, como mínimo:
   - build sin advertencias;
