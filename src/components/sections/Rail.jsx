@@ -6,15 +6,21 @@ import rail1 from '../../assets/images/rail-1.webp';
 import rail2 from '../../assets/images/rail-2.webp';
 import rail3 from '../../assets/images/rail-3.webp';
 import rail4 from '../../assets/images/rail-4.webp';
+import rail1Sm from '../../assets/images/rail-1-640.webp';
+import rail2Sm from '../../assets/images/rail-2-640.webp';
+import rail3Sm from '../../assets/images/rail-3-640.webp';
+import rail4Sm from '../../assets/images/rail-4-640.webp';
 
 const RL_N = 40, RL_EASE = 'cubic-bezier(0.45,0,0.55,1)';
 const RL_IMGS = [rail1, rail2, rail3, rail4];
+const RL_SM = [rail1Sm, rail2Sm, rail3Sm, rail4Sm];
+const rlSrcSet = k => RL_SM[k] + ' 640w, ' + RL_IMGS[k] + ' 1200w';
 
 /**
  * Fila de la lista de conectividad: al hover/focus, 40 barras naranjas barren la fila en cascada.
  * En táctil (≤900px) funciona como acordeón: el tap abre/cierra la fila y despliega su imagen bajo el título.
  */
-function RailRow({ r, k, img, act, setAct }) {
+function RailRow({ r, k, img, srcSet, act, setAct }) {
   const ref = useRef(null); const anims = useRef([]);
   const sweep = (to, origin) => {
     const el = ref.current; if (!el) return; const rects = [...el.querySelectorAll('.rl-bar')]; const rm = reduceMotion();
@@ -38,7 +44,7 @@ function RailRow({ r, k, img, act, setAct }) {
     <span className="rl-title">{r[1]}</span>
     <span className="rl-fig">[{r[2]}]</span>
     <span className="rl-chev" aria-hidden="true"><Icon name="chevron-down" size={20} color="currentColor" /></span>
-    <span className="rl-thumb"><span><img src={img} alt="" loading="lazy" /></span></span>
+    <span className="rl-thumb"><span><img src={img} srcSet={srcSet} sizes="calc(100vw - 64px)" width="1200" height="800" alt="" loading="lazy" /></span></span>
   </li>;
 }
 
@@ -52,8 +58,8 @@ export function Rail({ t, lang }) {
           <p className="rl-lead">{R.leadParts.map(([x, d], i) => d ? <span key={i}>{x}</span> : <Fragment key={i}>{x}</Fragment>)}</p>
         </Reveal>
         <div className={'rl-body' + (act >= 0 ? ' has-act' : '')}>
-          <Reveal as="ul" stagger={120} className="rl-list">{R.rows.map((r, k) => <RailRow key={r[1]} r={r} k={k} img={RL_IMGS[k]} act={act} setAct={setAct} />)}</Reveal>
-          <div className="rl-stage" aria-hidden="true">{R.rows.map((r, k) => <img key={k} src={RL_IMGS[k]} alt="" loading="lazy" className={'rl-img' + (k === act ? ' on' : '')} />)}</div>
+          <Reveal as="ul" stagger={120} className="rl-list">{R.rows.map((r, k) => <RailRow key={r[1]} r={r} k={k} img={RL_IMGS[k]} srcSet={rlSrcSet(k)} act={act} setAct={setAct} />)}</Reveal>
+          <div className="rl-stage" aria-hidden="true">{R.rows.map((r, k) => <img key={k} src={RL_IMGS[k]} srcSet={rlSrcSet(k)} sizes="420px" width="1200" height="800" alt="" loading="lazy" className={'rl-img' + (k === act ? ' on' : '')} />)}</div>
         </div>
       </div>
       <Reveal delay={240} className="rail-map">

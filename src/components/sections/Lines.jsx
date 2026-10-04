@@ -12,6 +12,9 @@ export function Lines({ t }) {
   const L = t.lines; const n = L.items.length;
   const secRef = useRef(null); const bars = useRef([]); const tabs = useRef([]);
   const [i, setI] = useState(0); const iRef = useRef(0);
+  // Solo se descargan la imagen visible y la siguiente (las demás se piden al acercarse a ellas).
+  const [ld, setLd] = useState(() => new Set([0, 1]));
+  useEffect(() => { setLd(s => s.has(i) && s.has((i + 1) % n) ? s : new Set([...s, i, (i + 1) % n])); }, [i]);
   const inRef = useRef(null); const seen = useReplay(inRef, { threshold: .2 });
   const frameRef = useRef(null); const pinRef = useRef(false);
   // Se fija si cabe: en escritorio, la lista completa; en móvil/tablet (≤900), la lista más una imagen de al menos 120px.
@@ -72,7 +75,7 @@ export function Lines({ t }) {
               </div>
             </div>
             <div className="ln-stage" aria-live="polite" {...swipe}>
-              {L.items.map((x, k) => <img key={k} src={x.img} alt={k === i ? x.alt : ''} aria-hidden={k !== i} className={'ln-img' + (k === i ? ' on' : '')} style={x.pos ? { objectPosition: x.pos } : undefined} loading="lazy" />)}
+              {L.items.map((x, k) => <img key={k} src={ld.has(k) ? x.img : undefined} srcSet={ld.has(k) ? x.imgSm + ' 800w, ' + x.img + ' 1400w' : undefined} sizes="(max-width: 900px) calc(100vw - 40px), 700px" width="1400" height="933" alt={k === i ? x.alt : ''} aria-hidden={k !== i} className={'ln-img' + (k === i ? ' on' : '')} style={x.pos ? { objectPosition: x.pos } : undefined} loading="lazy" />)}
               <div className="ln-shade" aria-hidden="true"></div>
             </div>
           </div>
