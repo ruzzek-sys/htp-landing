@@ -23,7 +23,7 @@ export function HeroNetwork() {
       fadeStart = Math.max(...dots.map(d => d.start + C.lineDuration * (1 + C.tailLength))) + C.holdAfter;
     };
     const drawLine = (d, headT, tailT) => {
-      const steps = 48; ctx.lineCap = 'round'; let prev = bez(center, d.ctrl, d.p, tailT);
+      const steps = 24; ctx.lineCap = 'round'; let prev = bez(center, d.ctrl, d.p, tailT);
       for (let i = 1; i <= steps; i++) {
         const t = tailT + (headT - tailT) * (i / steps); const pt = bez(center, d.ctrl, d.p, t); const a = Math.pow(i / steps, .6);
         ctx.strokeStyle = 'rgba(' + C.color + ',' + (a * .5) + ')'; ctx.lineWidth = .5 + a * .6; ctx.beginPath(); ctx.moveTo(prev.x, prev.y); ctx.lineTo(pt.x, pt.y); ctx.stroke(); prev = pt;
@@ -49,11 +49,14 @@ export function HeroNetwork() {
       if (t > fadeStart + C.fadeOut + C.pauseBetween) newCycle(now);
       raf = requestAnimationFrame(frame);
     };
-    const onResize = () => { resize(); newCycle(performance.now()); };
-    resize(); newCycle(performance.now()); raf = requestAnimationFrame(frame);
+    const onResize = () => { if (!begun) return; resize(); newCycle(performance.now()); };
+    // Arranca cuando la página terminó de cargar, para no competir con la carga inicial ni con la hidratación.
+    let begun = false;
+    const begin = () => { begun = true; resize(); newCycle(performance.now()); raf = requestAnimationFrame(frame); };
+    if (document.readyState === 'complete') begin(); else window.addEventListener('load', begin, { once: true });
     window.addEventListener('resize', onResize);
-    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible && !raf) raf = requestAnimationFrame(frame); }); io.observe(canvas);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); io.disconnect(); };
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (begun && visible && !raf) raf = requestAnimationFrame(frame); }); io.observe(canvas);
+    return () => { window.removeEventListener('load', begin); cancelAnimationFrame(raf); window.removeEventListener('resize', onResize); io.disconnect(); };
   }, []);
   return <canvas ref={ref} className="hero-net" aria-hidden="true"></canvas>;
 }

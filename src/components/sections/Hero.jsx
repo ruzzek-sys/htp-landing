@@ -10,18 +10,22 @@ import heroPoster from '../../assets/video/hero-poster.webp';
 
 export function Hero({ t }) {
   const h = t.hero;
-  const [on, setOn] = useState(reduceMotion());
-  // El video se pausa cuando el hero sale de pantalla (ahorra CPU y batería) y se reanuda al volver.
+  const [on, setOn] = useState(false);
+  // El video empieza a descargarse cuando la página terminó de cargar (antes se ve la portada), para no competir con
+  // CSS, fuentes e imágenes en conexiones móviles. Se pausa cuando el hero sale de pantalla y se reanuda al volver.
   const vidRef = useRef(null);
   useEffect(() => {
     const v = vidRef.current; if (!v) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); });
-    io.observe(v); return () => io.disconnect();
+    let started = false, visible = true;
+    const start = () => { started = true; v.preload = 'auto'; if (visible) v.play().catch(() => {}); };
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+    const io = new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (!started) return; if (visible) v.play().catch(() => {}); else v.pause(); });
+    io.observe(v); return () => { io.disconnect(); window.removeEventListener('load', start); };
   }, []);
-  useEffect(() => { if (reduceMotion()) return; const id = requestAnimationFrame(() => requestAnimationFrame(() => setOn(true))); const to = setTimeout(() => setOn(true), 60); return () => { cancelAnimationFrame(id); clearTimeout(to); }; }, []);
+  useEffect(() => { if (reduceMotion()) { setOn(true); return; } const id = requestAnimationFrame(() => requestAnimationFrame(() => setOn(true))); const to = setTimeout(() => setOn(true), 60); return () => { cancelAnimationFrame(id); clearTimeout(to); }; }, []);
   const ln = i => ({ opacity: on ? 1 : 0, transform: on ? 'none' : 'translate3d(0,28px,0)', transition: 'opacity 1400ms var(--ease-gentle) ' + (250 + i * 220) + 'ms,transform 1400ms var(--ease-gentle) ' + (250 + i * 220) + 'ms' });
   return <section id="inicio" aria-labelledby="hero-title" className="hero" data-on-dark="">
-    <video ref={vidRef} poster={heroPoster} autoPlay muted loop playsInline preload="auto" aria-label="Vista aérea de Huachipato Terminal Portuario, su muelle y zona industrial en la bahía de San Vicente, Talcahuano" className="hero-img hero-video">
+    <video ref={vidRef} poster={heroPoster} muted loop playsInline preload="none" aria-label="Vista aérea de Huachipato Terminal Portuario, su muelle y zona industrial en la bahía de San Vicente, Talcahuano" className="hero-img hero-video">
       <source src={heroVideo720} type="video/webm" media="(max-width: 767px)" />
       <source src={heroVideo1080} type="video/webm" />
       <source src={heroVideoMp4} type="video/mp4" />

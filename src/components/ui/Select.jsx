@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useId, useState } from 'react';
 import { Icon } from './Icon.jsx';
 import { boxS, helpS, labelS } from './fields.js';
 
 export function Select({ required, label, options = [], value, defaultValue, onChange, placeholder, error, help, disabled, style }) {
   const [f, setF] = useState(false);
-  const hid = useMemo(() => 'h-' + Math.random().toString(36).slice(2, 8), []);
+  const hid = useId(); // estable entre el HTML pregenerado y el navegador
   return <label style={{ display: 'flex', flexDirection: 'column', gap: 6, ...style }}>
     {label && <span style={labelS}>{label}{required && <span aria-hidden="true" style={{ color: 'var(--text-accent)' }}> *</span>}</span>}
     <span style={{ position: 'relative', display: 'block' }}>

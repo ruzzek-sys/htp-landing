@@ -1,4 +1,7 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
+// useLayoutEffect solo existe en el navegador; en el render del build (SSR) se usa useEffect para evitar la advertencia.
+const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 // Corte "travesaño T": una muesca centrada verticalmente en un costado de la tarjeta, con todas sus esquinas redondeadas
 // (convexas y cóncavas), como el hueco bajo el travesaño de la T del logotipo HTP.
@@ -21,7 +24,7 @@ export function tcutPath(w, h, { side = 'right', band = .3, depth = 16, radius =
 export function useTCut(enabled, opts) {
   const ref = useRef(null);
   const [size, setSize] = useState(null);
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (!enabled || !ref.current) return;
     const el = ref.current;
     const upd = () => setSize({ w: el.offsetWidth, h: el.offsetHeight });

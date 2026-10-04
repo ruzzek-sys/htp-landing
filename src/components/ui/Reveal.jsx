@@ -4,9 +4,9 @@ import { Children, cloneElement, createElement, isValidElement, useEffect, useRe
 export function Reveal({ children, as = 'div', delay = 0, stagger = 0, distance, direction = 'up', duration, once = true, style, ...rest }) {
   const ref = useRef(null);
   const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const [v, setV] = useState(reduce);
+  const [v, setV] = useState(false); // igual en el HTML pregenerado y en el primer render del navegador
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) { setV(true); return; }
     const el = ref.current;
     if (!el || !('IntersectionObserver' in window)) { setV(true); return; }
     const io = new IntersectionObserver(([e]) => {

@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useId, useState } from 'react';
 import { Icon } from './Icon.jsx';
 import { boxS, helpS, labelS } from './fields.js';
 
 export function Input({ label, placeholder, value, defaultValue, onChange, type = 'text', error, help, icon, disabled, multiline, rows = 4, required, style }) {
   const [f, setF] = useState(false);
-  const hid = useMemo(() => 'h-' + Math.random().toString(36).slice(2, 8), []);
+  const hid = useId(); // estable entre el HTML pregenerado y el navegador
   const common = {
     'aria-invalid': error ? true : undefined,
     'aria-describedby': error || help ? hid : undefined,

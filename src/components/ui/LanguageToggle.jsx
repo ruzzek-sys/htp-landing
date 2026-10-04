@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-export function LanguageToggle({ value = 'es', onChange, onDark, short, glass, style }) {
+/** En pantallas < 600px se muestra redondo con "EN"/"ES" y sin fondo glass (ver .lang-t en header.css). */
+export function LanguageToggle({ value = 'es', onChange, onDark, glass, style }) {
   const next = value === 'es' ? 'en' : 'es';
   const [h, setH] = useState(false);
   const [p, setP] = useState(false);
   const ease = 'var(--ease-standard)';
   const c = onDark ? '#fff' : 'var(--htp-azul)';
-  return <button type="button" lang={next === 'en' ? 'en' : 'es'} aria-label={value === 'es' ? 'Switch to English' : 'Cambiar a español'}
+  return <button type="button" className="lang-t" lang={next === 'en' ? 'en' : 'es'} aria-label={value === 'es' ? 'Switch to English' : 'Cambiar a español'}
     onClick={() => onChange && onChange(next)}
     onMouseEnter={() => setH(true)}
     onMouseLeave={() => { setH(false); setP(false); }}
@@ -24,6 +25,6 @@ export function LanguageToggle({ value = 'es', onChange, onDark, short, glass, s
       ...style,
     }}>
     <span aria-hidden="true" style={{ position: 'absolute', inset: 0, background: onDark ? 'rgba(255,255,255,.16)' : 'var(--surface-tint)', opacity: h ? 1 : 0, transition: 'opacity var(--dur-slow) ' + ease, zIndex: -1 }} />
-    {short ? (value === 'es' ? 'EN' : 'ES') : value === 'es' ? 'English' : 'Español'}
+    <span className="lt-l">{value === 'es' ? 'English' : 'Español'}</span><span className="lt-s">{value === 'es' ? 'EN' : 'ES'}</span>
   </button>;
 }

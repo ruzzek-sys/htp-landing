@@ -12,3 +12,13 @@
 @media(max-width:600px){.hdr-in{height:64px}.hdr.solid .hdr-in{height:60px}}
 @media(max-width:600px){.hdr-in{gap:12px}.hdr-act{gap:8px}}
 .hdr-mob{max-height:calc(100svh - 72px);overflow-y:auto;overscroll-behavior:contain}
+/* responsive del header resuelto en CSS (el HTML se genera de antemano, sin conocer el ancho de pantalla) */
+.hdr-cta,.hdr-burger{display:inline-flex}
+@media(max-width:1239px){.hdr-nav,.hdr-cta{display:none!important}.lang-t{height:40px!important}}
+@media(min-width:1240px){.hdr-burger,.hdr-mob{display:none!important}}
+.lang-t .lt-s{display:none}
+@media(max-width:599px){
+  .hdr-logo img{height:26px!important}
+  .lang-t{width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;border-radius:50%!important;background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .lang-t .lt-l{display:none}.lang-t .lt-s{display:inline}
+}

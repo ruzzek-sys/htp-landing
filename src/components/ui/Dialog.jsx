@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { IconButton } from './IconButton.jsx';
 
 /** Diálogo modal con trampa de foco y cierre con Escape. */
 export function Dialog({ open, title, children, actions, onClose, width = 520, inline, style }) {
   const ref = useRef(null);
-  const tid = useMemo(() => 'dlg-' + Math.random().toString(36).slice(2, 8), []);
+  const tid = useId(); // estable entre el HTML pregenerado y el navegador
   useEffect(() => {
     if (!open || inline) return;
     const prev = document.activeElement;

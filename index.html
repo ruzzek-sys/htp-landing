@@ -8,6 +8,9 @@
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0A1A3F">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Huachipato Terminal Portuario","alternateName":"HTP","parentOrganization":{"@type":"Organization","name":"Grupo CAP"},"address":{"@type":"PostalAddress","streetAddress":"Av. Gran Bretaña 2910","addressLocality":"Talcahuano","addressRegion":"Biobío","addressCountry":"CL"},"email":"contacto@htpchile.cl"}</script>
+<!-- Si el visitante eligió inglés, se oculta el contenido pregenerado (en español) hasta que la app aplica el idioma. -->
+<script>try{if(localStorage.getItem('htp-landing-lang')==='en'){var d=document.documentElement;d.classList.add('lang-pending');setTimeout(function(){d.classList.remove('lang-pending')},4000)}}catch(e){}</script>
+<style>.lang-pending #root{visibility:hidden}</style>
 </head>
 <body>
 <div id="root"></div>
