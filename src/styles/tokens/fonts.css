@@ -1,18 +1,10 @@
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-Thin.ttf") format("truetype");font-weight:100;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-LightItalic.ttf") format("truetype");font-weight:300;font-style:italic;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-MediumItalic.ttf") format("truetype");font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:swap}
-@font-face{font-family:"Montserrat";src:url("../../assets/fonts/Montserrat-ExtraBoldItalic.ttf") format("truetype");font-weight:800;font-style:italic;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/TeXGyreHeros-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/TeXGyreHeros-Italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/TeXGyreHeros-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/TeXGyreHeros-BoldItalic.otf") format("opentype");font-weight:700;font-style:italic;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros Cn";src:url("../../assets/fonts/TeXGyreHerosCn-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros Cn";src:url("../../assets/fonts/TeXGyreHerosCn-Italic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros Cn";src:url("../../assets/fonts/TeXGyreHerosCn-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"TeX Gyre Heros Cn";src:url("../../assets/fonts/TeXGyreHerosCn-BoldItalic.otf") format("opentype");font-weight:700;font-style:italic;font-display:swap}
+/* Fuentes en WOFF2 recortadas a caracteres latinos (español/inglés + puntuación tipográfica): ~25 KB cada una.
+   Solo se incluyen los pesos que usa el sitio; el navegador descarga únicamente los que aparecen en pantalla. */
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-300.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-500.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-700.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Montserrat";src:url("../../assets/fonts/montserrat-800.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/texgyreheros-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"TeX Gyre Heros";src:url("../../assets/fonts/texgyreheros-700.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
