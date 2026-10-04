@@ -1,0 +1,13 @@
+:root{
+--font-corporativa:"Montserrat",system-ui,sans-serif;
+--font-complementaria:"TeX Gyre Heros",Helvetica,Arial,sans-serif;
+--font-complementaria-condensada:"TeX Gyre Heros Cn","TeX Gyre Heros",Arial Narrow,sans-serif;
+--font-display:var(--font-corporativa);
+--font-heading:var(--font-corporativa);
+--font-body:var(--font-complementaria);
+--font-ui:var(--font-corporativa);
+--fw-thin:100;/* @kind font */--fw-light:300;/* @kind font */--fw-regular:400;/* @kind font */--fw-medium:500;/* @kind font */--fw-semibold:600;/* @kind font */--fw-bold:700;/* @kind font */--fw-extrabold:800;/* @kind font */--fw-black:900;/* @kind font */
+--fs-display:64px;--fs-h1:48px;--fs-h2:36px;--fs-h3:26px;--fs-h4:20px;--fs-lead:20px;--fs-body:16px;--fs-small:14px;--fs-caption:12px;--fs-overline:12px;
+--lh-tight:1.08;/* @kind font */--lh-heading:1.18;/* @kind font */--lh-body:1.55;/* @kind font */--lh-ui:1.2;/* @kind font */
+--ls-overline:.14em;/* @kind font */--ls-nav:.06em;/* @kind font */--ls-button:.08em;/* @kind font */--ls-eyebrow:.02em;/* @kind font */
+}

@@ -1,0 +1,20 @@
+:root{
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:96px;--space-10:128px;
+--container-max:1200px;/* @kind spacing */--gutter:24px;/* @kind spacing */--margin-page:64px;/* @kind spacing */--nav-height:80px;/* @kind spacing */
+--radius-none:0;--radius-xs:4px;--radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-pill:999px;
+--border-hair:1px;/* @kind spacing */--border-thick:2px;/* @kind spacing */
+--rule-width:100px;/* @kind spacing */--rule-height:2px;/* @kind spacing */
+--shadow-sm:0 1px 2px rgba(10,26,63,.08);
+--shadow-md:0 6px 18px rgba(10,26,63,.10);
+--shadow-lg:0 18px 40px rgba(10,26,63,.16);
+--glass-blur:blur(18px) saturate(140%);/* @kind other */
+--glass-blur-strong:blur(28px) saturate(150%);/* @kind other */
+--shadow-glass:0 10px 30px rgba(10,26,63,.22),inset 0 1px 0 rgba(255,255,255,.12);
+--ease-standard:cubic-bezier(.2,.7,.2,1);/* @kind other */
+--ease-exit:cubic-bezier(.4,0,1,1);/* @kind other */
+--ease-emphasis:cubic-bezier(.16,1,.3,1);/* @kind other */
+--dur-reveal:600ms;/* @kind other */--dur-scene:1000ms;/* @kind other */--stagger:80ms;/* @kind other */
+--reveal-distance:20px;/* @kind spacing */
+--dur-fast:120ms;/* @kind other */--dur-base:200ms;/* @kind other */--dur-slow:400ms;/* @kind other */
+--z-nav:50;/* @kind other */--z-overlay:90;/* @kind other */--z-dialog:100;/* @kind other */--z-toast:110;/* @kind other */
+}

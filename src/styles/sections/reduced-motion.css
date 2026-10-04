@@ -1,0 +1,2 @@
+/* reduced motion (global, va al final) */
+@media(prefers-reduced-motion:reduce){.hero-img,.flow,.spot::after,.fut-line,.hero-scroll-line span{animation:none!important}}

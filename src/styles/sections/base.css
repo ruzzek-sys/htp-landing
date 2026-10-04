@@ -1,0 +1,23 @@
+/* base: layout, tipografía de sección y animaciones utilitarias */
+a{color:var(--htp-azul)}a:hover{color:var(--htp-naranja-aa)}
+:root{--dur-reveal:1200ms;--reveal-distance:36px;--ease-gentle:cubic-bezier(.22,.61,.36,1)}
+html{scroll-behavior:auto}body{overflow-x:hidden}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);box-sizing:border-box}
+.sec{padding:clamp(80px,9vw,120px) 0;position:relative}
+.sec-soft{background:var(--surface-soft)}
+.sec-deep{background:var(--htp-azul-900);color:#fff;overflow:hidden}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 64px;align-items:end;margin-bottom:clamp(40px,5vw,64px)}
+.sec-head h2{margin:0}
+.sec-head.stack{grid-template-columns:1fr;gap:24px}
+@media(max-width:860px){.sec-head{grid-template-columns:1fr}}
+.lead{font:400 18px/1.6 var(--font-complementaria);color:var(--text-muted);max-width:54ch;margin:0}
+.lead.on-dark{color:var(--htp-azul-100)}
+.eyebrow{font:600 12px/1.3 var(--font-corporativa);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--text-accent);margin:0}
+.eyebrow.on-dark{color:var(--htp-coral)}
+.hint{font:500 13px/1.3 var(--font-corporativa);color:var(--text-muted);margin:0 0 16px;letter-spacing:.02em}
+.hint.on-dark{color:var(--htp-azul-200)}
+@keyframes fadeUp{from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
+.fade-up{animation:fadeUp 900ms var(--ease-gentle) both}
+.lang-fade{animation:langFade 700ms var(--ease-standard) both}@keyframes langFade{from{opacity:0}to{opacity:1}}
+/* responsivo: ningún brillo o glow decorativo puede ensanchar la página (en móvil eso corta el lado derecho de todo el sitio) */
+main,.ft{overflow-x:clip}

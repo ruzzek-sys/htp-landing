@@ -1,0 +1,28 @@
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:stretch}.contact>*:last-child{display:flex;flex-direction:column}.contact>*:last-child>*{flex:1}div:has(>.ct-form){flex:1;display:flex;flex-direction:column}.ct-form{flex:1}.ct-msg{display:flex;flex-direction:column}.ct-msg>label{flex:1}.ct-msg>label>span:nth-of-type(2){flex:1;display:flex!important}.ct-msg textarea{flex:1;height:auto!important}@media(min-width:561px){.ct-form{grid-template-rows:var(--rows)}}
+.ct-copy{display:flex;flex-direction:column;gap:24px}.ct-copy h2{margin:0}
+.ct-aside{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:18px}
+.ct-aside li{display:flex;gap:14px;align-items:flex-start;font:400 15px/1.45 var(--font-complementaria);color:var(--text-body)}
+.ct-aside small{display:block;font:600 11px var(--font-corporativa);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.ct-ic{flex:none;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--border-subtle);display:grid;place-items:center}
+.ct-map{display:flex;flex-direction:column;gap:10px;margin-top:8px;flex:1;min-height:0}
+.ct-map-h{margin:0;font:600 11px var(--font-corporativa);letter-spacing:var(--ls-overline);text-transform:uppercase;color:var(--text-muted)}
+.ct-map-frame{position:relative;aspect-ratio:16/10;flex:1;min-height:220px;border-radius:4px;overflow:hidden;border:1px solid var(--border-subtle);background:#fff}
+.ct-map-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ct-map-link{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;font:600 14px var(--font-complementaria);color:var(--htp-azul)}
+.ct-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:clamp(20px,3vw,36px)}
+.span2{grid-column:1/-1}
+.ct-err{grid-column:1/-1;margin:0;display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:4px;background:#FDECEB;color:#A3241E;font:600 14px var(--font-complementaria)}
+.ct-ferr{margin:6px 0 0;font:400 13px var(--font-complementaria);color:#B42318}
+.ct-submit{display:flex;justify-content:flex-end}
+@media(max-width:960px){.contact{grid-template-columns:1fr}.ct-map-frame{flex:none}}
+@media(max-width:560px){.ct-form{grid-template-columns:1fr}.ct-submit>*{width:100%}}
+.ct-map-h,.ct-aside small{font-size:12px}
+.ct-map-link{padding:10px 0}.ct-aside a{display:inline-block;padding:4px 0}
+@media(max-width:960px){.contact{grid-template-columns:minmax(0,1fr)}.ct-map-frame{max-height:360px}
+  /* 16px evita que iOS haga zoom al enfocar un campo */
+  .ct-form input,.ct-form select,.ct-form textarea{font-size:16px!important}}
+@media(max-width:560px){.ct-form{gap:16px;padding:0}}
+/* en una columna el mapa toma siempre el ancho disponible: sin aspect-ratio, porque su min-height (220px) se traducía en un
+   ancho mínimo de 352px y en pantallas de 360px el mapa se salía por la derecha */
+@media(max-width:960px){.ct-map-frame{aspect-ratio:auto;width:100%;box-sizing:border-box;min-width:0;height:clamp(220px,62vw,360px);min-height:0}}

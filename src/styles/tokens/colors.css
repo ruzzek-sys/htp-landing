@@ -1,0 +1,94 @@
+:root{
+/* Brand — valores oficiales del Manual de Identidad Visual (pág. "Códigos de color") */
+--htp-azul:#003794;
+--htp-coral:#F49368;
+--htp-naranja:#FD6E50;
+--htp-celeste:#B1BFDA;
+/* Fondo de color complementario (pág. "Fondos de color") */
+--htp-pizarra:#607A7E;
+/* Azul — escala derivada del azul oficial */
+--htp-azul-950:#0A1A3F;
+--htp-azul-900:#0F2A5C;
+--htp-azul-800:#12306E;
+--htp-azul-700:#003794;
+--htp-azul-600:#1D4DA8;
+--htp-azul-500:#3E68BC;
+--htp-azul-300:#8FA6D2;
+--htp-azul-200:#B1BFDA;
+--htp-azul-100:#DCE3F0;
+--htp-azul-50:#EEF2F8;
+/* Naranja — escala derivada */
+--htp-naranja-700:#D8502F;
+--htp-naranja-aa:#C8441F; /* naranja accesible: 4.88:1 con blanco — texto y fondos de botón */
+--htp-naranja-800:#B23A17;
+--htp-naranja-900:#93300F;
+--htp-naranja-600:#EC5E3F;
+--htp-naranja-500:#FD6E50;
+--htp-naranja-400:#F49368;
+--htp-naranja-100:#FDE3D6;
+--htp-naranja-300:#FF8A6E; /* hover botón primario */
+/* Neutros fríos */
+--htp-blanco:#FFFFFF;
+--htp-gris-50:#F5F7FA;
+--htp-gris-100:#ECEFF4;
+--htp-gris-200:#DDE2EA;
+--htp-gris-300:#C3CAD6;
+--htp-gris-400:#8A94A8; /* 3.05:1 — mínimo para bordes de controles (WCAG 1.4.11) */
+--htp-gris-500:#667085; /* 4.97:1 — texto secundario mínimo */
+--htp-gris-700:#465066;
+--htp-gris-900:#23304D; /* tinta más oscura permitida — nunca #000 */
+/* Estados (íconos de uso correcto/incorrecto del manual) */
+--htp-exito:#47BE6E;
+--htp-error:#F5473F;
+--htp-alerta:#F2A93B;
+--htp-info:#1D4DA8;
+/* Degradado de marca — azul a coral, como en la bajada de la "P" */
+--htp-degradado:linear-gradient(90deg,#003794 0%,#003794 18%,#8A6A87 62%,#F49368 100%); /* @kind color */
+--htp-degradado-cta:linear-gradient(90deg,#FD6E50 0%,#F49368 100%); /* @kind color */
+--htp-degradado-aa:linear-gradient(90deg,#003794 0%,#7A4A78 55%,#C8441F 100%); /* @kind color */ /* versión del degradado apta para texto blanco (≥4.5:1 en todo el recorrido) */
+--htp-degradado-cta-hover:linear-gradient(90deg,#FF8A6E 0%,#FFA58C 100%); /* @kind color */
+--htp-degradado-naranja-aa:linear-gradient(90deg,#C8441F 0%,#B83C1A 40%,#8E3440 75%,#3A2F6E 100%); /* @kind color */ /* naranja accesible → azul, texto blanco ≥ 4.88:1 en todo el recorrido */
+--htp-degradado-naranja-aa-hover:linear-gradient(90deg,#B23A17 0%,#9E3318 35%,#6E3553 70%,#12306E 100%); /* @kind color */
+--htp-degradado-aa-hover:linear-gradient(90deg,#12306E 0%,#6A3F6C 50%,#B23A17 100%); /* @kind color */
+--htp-degradado-noche:linear-gradient(180deg,rgba(10,26,63,0) 0%,rgba(10,26,63,.85) 100%); /* @kind color */
+
+/* Semánticos */
+--text-primary:var(--htp-azul);
+--text-heading:var(--htp-azul);
+--text-body:var(--htp-gris-900);
+--text-muted:var(--htp-gris-700);
+--text-subtle:var(--htp-gris-500);
+--text-on-dark:var(--htp-blanco);
+--text-on-dark-muted:var(--htp-azul-200);
+--text-accent:var(--htp-naranja-aa);
+--surface-page:var(--htp-blanco);
+--surface-soft:var(--htp-gris-50);
+--surface-card:var(--htp-blanco);
+--surface-tint:var(--htp-azul-50);
+--surface-brand:var(--htp-azul);
+--surface-deep:var(--htp-azul-900);
+--surface-accent:var(--htp-coral);
+--border-subtle:var(--htp-gris-200);
+--border-strong:var(--htp-gris-400);
+--border-default:var(--htp-gris-200);
+--border-brand:var(--htp-azul);
+--rule-accent:var(--htp-coral);
+/* Botón primario: naranja ORIGINAL de marca + texto azul-950 (6.1:1 AA). Nunca texto blanco sobre naranja/coral. */
+--action-primary:var(--htp-naranja);
+--action-primary-hover:var(--htp-naranja-300);
+--action-primary-press:var(--htp-naranja-600);
+--action-primary-text:var(--htp-azul-950);
+--action-secondary:var(--htp-azul);
+--action-secondary-hover:var(--htp-azul-800);
+/* Glass — transparencia + blur sobre fotografía o fondos oscuros */
+--glass-dark-bg:rgba(15,42,92,.32);
+--glass-dark-border:rgba(255,255,255,.16);
+--glass-light-bg:rgba(255,255,255,.62);
+--glass-light-border:rgba(255,255,255,.7);
+--glass-neutral-bg:rgba(177,191,218,.28);
+--glass-neutral-border:rgba(255,255,255,.28);
+--glass-highlight:linear-gradient(180deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,0) 40%); /* @kind color */
+--focus-color:var(--htp-azul);
+--focus-color-on-dark:#FFFFFF;
+--focus-ring:0 0 0 2px #FFFFFF,0 0 0 4px var(--htp-azul);
+}

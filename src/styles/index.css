@@ -1,0 +1,62 @@
+/*
+  Punto de entrada de estilos.
+
+  Tailwind se carga SIN preflight (su reset alteraría la réplica exacta del diseño) y dentro de
+  capas (@layer). El CSS del sitio va sin capa, por lo que siempre tiene prioridad sobre las
+  utilidades de Tailwind: úsalas para componentes nuevos, no para sobrescribir los existentes.
+*/
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "../**/*.{js,jsx}";
+@source "../../index.html";
+
+/* Tokens del design system HTP (mismo orden que el export original) */
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/base.css";
+
+/* Estilos de la landing, por sección (el orden importa: replica la cascada original) */
+@import "./sections/base.css";
+@import "./sections/frosted.css";
+@import "./sections/header.css";
+@import "./sections/hero.css";
+@import "./sections/stats.css";
+@import "./sections/lines.css";
+@import "./sections/cargo.css";
+@import "./sections/rail.css";
+@import "./sections/future.css";
+@import "./sections/contact.css";
+@import "./sections/footer.css";
+@import "./sections/reduced-motion.css";
+
+/* Tokens de marca expuestos como utilidades de Tailwind (bg-azul, text-coral, font-corp, ...) */
+@theme inline {
+  --color-azul: var(--htp-azul);
+  --color-azul-950: var(--htp-azul-950);
+  --color-azul-900: var(--htp-azul-900);
+  --color-azul-800: var(--htp-azul-800);
+  --color-azul-600: var(--htp-azul-600);
+  --color-azul-500: var(--htp-azul-500);
+  --color-azul-300: var(--htp-azul-300);
+  --color-azul-200: var(--htp-azul-200);
+  --color-azul-100: var(--htp-azul-100);
+  --color-azul-50: var(--htp-azul-50);
+  --color-coral: var(--htp-coral);
+  --color-naranja: var(--htp-naranja);
+  --color-naranja-aa: var(--htp-naranja-aa);
+  --color-celeste: var(--htp-celeste);
+  --color-pizarra: var(--htp-pizarra);
+  --color-gris-50: var(--htp-gris-50);
+  --color-gris-100: var(--htp-gris-100);
+  --color-gris-200: var(--htp-gris-200);
+  --color-gris-300: var(--htp-gris-300);
+  --color-gris-400: var(--htp-gris-400);
+  --color-gris-500: var(--htp-gris-500);
+  --color-gris-700: var(--htp-gris-700);
+  --color-gris-900: var(--htp-gris-900);
+  --font-corp: var(--font-corporativa);
+  --font-comp: var(--font-complementaria);
+}
